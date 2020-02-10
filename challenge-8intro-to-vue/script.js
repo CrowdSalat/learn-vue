@@ -1,4 +1,14 @@
 //Create a new component for product-details with a prop of details. 
+Vue.component('product-details',{
+  props: {
+    details: Array
+  },
+  template: `
+  <ul>
+    <li v-for="detail in details">{{ detail }}</li>
+  </ul>
+  `
+})
 
 Vue.component('product', {
   props: {
@@ -20,9 +30,7 @@ Vue.component('product', {
           <p v-else>Out of Stock</p>
           <p>Shipping: {{ shipping }}</p>
 
-          <ul>
-            <li v-for="detail in details">{{ detail }}</li>
-          </ul>
+          <product-details v-bind:details="productDetails"></product-details>
 
           <div class="color-box"
                v-for="(variant, index) in variants" 
@@ -52,7 +60,7 @@ Vue.component('product', {
         product: 'Socks',
         brand: 'Vue Mastery',
         selectedVariant: 0,
-        details: ['80% cotton', '20% polyester', 'Gender-neutral'],
+        productDetails: ['80% cotton', '20% polyester', 'Gender-neutral'],
         variants: [
           {
             variantId: 2234,
