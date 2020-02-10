@@ -10,10 +10,10 @@
 <!-- partial:index.partial.html -->
 <div class="nav-bar"></div>
 
-<div id="app">
+<div id="app">        
   
   <div class="product">
-        
+    
     <div class="product-image">
       <img :src="image" />
     </div>
@@ -21,7 +21,7 @@
     <div class="product-info">
       <h1>{{ product }}</h1>
       <p v-if="inStock">In Stock</p>
-      <p v-else>Out of Stock</p>
+      <p v-else :class="{ outOfStock: !inStock }">Out of Stock</p>
 
       <ul>
         <li v-for="detail in details">{{ detail }}</li>
@@ -43,14 +43,14 @@
         Add to cart
         </button>
 
-        <div class="cart">
-          <p>Cart({{ cart }})</p>
-        </div>
+      <div class="cart">
+        <p>Cart({{ cart }})</p>
+      </div>
 
-      </div> 
+    </div>
     
   </div>
-    
+  
 </div> 
 
  <script src="https://cdn.jsdelivr.net/npm/vue@2.5.13/dist/vue.js"></script>
